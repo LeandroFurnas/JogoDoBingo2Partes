@@ -1,114 +1,106 @@
-🎲 BINGO — Gerador de Cartões + Sistema de Sorteio
+🎲 Bingo Generator & Roller
+Sistema de geração de cartões de Bingo + sorteador manual
 
+Este repositório contém dois programas independentes escritos em C++, projetados para funcionar juntos num jogo de Bingo:
 
+generatecards.cpp → Gera cartões de Bingo totalmente aleatórios e todos diferentes.
 
+rollnumbers.cpp → Sorteia bolas de 1 a 100 em modo manual (pressionando ENTER).
 
+Ambos foram pensados para terminal/linha de comandos e funcionam em Linux, macOS e Windows (com MinGW).
 
+📌 1. generatecards.cpp — Gerador de Cartões de Bingo
+🔍 O que faz:
 
+Gera entre 1 e 500 cartões automaticamente.
 
+Cada cartão contém uma grelha 5×5.
 
-Este repositório contém dois programas em C++:
+Cada coluna tem um intervalo fixo:
 
-🟦 generatecards.cpp → Gera cartões de Bingo únicos (5×5)
+B: 1–20
 
-🔴 bingodraw.cpp → Simula o sorteio manual das bolas de 1 a 100
+I: 21–40
 
-O projeto segue as regras formais do jogo e foi desenvolvido para um trabalho prático de C++.
+N: 41–60
 
-📁 Conteúdo do Repositório
-📦 TrabalhoBingo/
- ┣ 📜 generatecards.cpp      → Gerador de cartões
- ┣ 📜 bingodraw.cpp          → Sistema de sorteio
- ┣ 📜 README.md              → Documentação
+G: 61–80
 
-🟦 1. Gerador de Cartões (generatecards)
-▶ Como executar
+O: 81–100
 
-O programa recebe o número de cartões como argumento:
+A posição central (linha 3, coluna 3) é FREE SPACE.
 
+Todos os cartões gerados são diferentes entre si.
+
+Utiliza std::vector em vez de arrays.
+
+▶️ Como compilar
+g++ generatecards.cpp -o generatecards
+
+▶️ Como executar
 ./generatecards [numero_de_cartoes]
 
-
-❗ Valores válidos: 1 a 500
 
 Exemplo:
 
 ./generatecards 20
 
-🧩 Regras dos Cartões
+🎱 2. rollnumbers.cpp — Sorteador Manual
+🔍 O que faz:
 
-Cada cartão segue a grelha clássica 5×5:
+Sorteia números de 1 a 100 sem repetição.
 
- B   I   N   G   O
-
-
-Cada coluna contém números de um intervalo específico:
-
-Coluna	Intervalo
-B	1 – 20
-I	21 – 40
-N	41 – 60
-G	61 – 80
-O	81 – 100
-✔ Garantias do programa:
-
-Cada coluna tem números únicos
-
-A posição centro (linha 3, coluna N) fica marcada como **
-
-Todos os cartões são diferentes entre si
-
-Cartões são impressos com formatação legível
-
-📝 Exemplo de Saída
-Carta 1:
-
- B     I     N     G     O
- 5    21    46    62    81
-10    35    59    79    92
- 3    27    **    70    88
-12    40    53    75    99
-19    33    44    67   100
-
-🔴 2. Sorteio de Bolas (bingodraw)
-▶ Execução
-./bingodraw
-
-🎰 Funcionalidades
-
-Sorteio manual (pressione ENTER para cada bola)
+O jogador pressiona ENTER para sortear a próxima bola.
 
 Mostra:
 
-Bola atual
+bola atual
 
-Última bola
+última bola
 
-Histórico das últimas 5 bolas
+últimas 5 bolas sorteadas
 
-Números não se repetem nunca
+Usa vector<int> em vez de arrays.
 
-O sorteio termina automaticamente após as 100 bolas
+Interface limpa (limpa o ecrã entre jogadas com quebras de linha).
 
-🔧 Compilação
-Windows (MinGW)
-g++ generatecards.cpp -o generatecards.exe
-g++ bingodraw.cpp -o bingodraw.exe
+▶️ Como compilar
+g++ rollnumbers.cpp -o rollnumbers
 
-Linux / MacOS
-g++ generatecards.cpp -o generatecards
-g++ bingodraw.cpp -o bingodraw
+▶️ Como executar
+./rollnumbers
 
-💡 Tecnologias Utilizadas
 
-C++ (Vetores, randomização, estrutura de dados, I/O)
+Depois é só carregar ENTER para sortear bolas uma a uma.
 
-Geração de números pseudo-aleatórios
+📁 Estrutura do Projeto
+📦 Bingo-Project
+ ├── generatecards.cpp
+ ├── rollnumbers.cpp
+ └── README.md
 
-Manipulação de argumentos da linha de comandos
+📜 Requisitos
 
-Garantia de unicidade e validação de dados
+Compilador C++ (g++)
 
-👤 Autor
+Sistema operativo:
 
-Projeto desenvolvido como trabalho prático de programação em C++.
+Linux (recomendado)
+
+macOS
+
+Windows (MinGW / WSL)
+
+🧩 Exemplos
+Cartão gerado:
+ B     I     N     G     O
+ 12    33    44    71    88
+  5    22    57    76    91
+ 18    28    **    69    99
+  7    39    55    63    87
+ 14    31    59    72    94
+
+Sorteador:
+Bola atualmente sorteada: 57
+Última bola sorteada: 12
+Últimas 5 bolas sorteadas: 12, 88, 43, 99, 57
