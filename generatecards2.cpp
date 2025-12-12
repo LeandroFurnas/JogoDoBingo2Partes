@@ -4,7 +4,7 @@
 #include <ctime>
 #include <iomanip>
 #include <algorithm>
-#include <fstream>   // NOVO: para criar arquivos
+#include <fstream>   
 #include <random>
 
 using namespace std;
@@ -39,20 +39,20 @@ int main(int argc, char* argv[]) {
                 card[row][col] = numeros[row];
         }
 
-        // Casa central FREE
+        
         card[2][2] = 0;
 
-        // NOME DO ARQUIVO
+        
         string fileName = "carta_" + to_string(c) + ".txt";
 
-        // ABRE ARQUIVO
+        /
         ofstream file(fileName);
         if (!file) {
             cout << "Erro ao criar arquivo: " << fileName << "\n";
             continue;
         }
 
-        // ESCREVE NO FICHEIRO
+        
         file << "Carta " << c << ":\n\n";
         file << " B\t I\t N\t G\t O\n";
 
@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
         }
 
         file.close();
-        cout << "Criado: " << fileName << "\n"; // Apenas confirma
+        cout << "Criado: " << fileName << "\n";
     }
 
     return 0;
