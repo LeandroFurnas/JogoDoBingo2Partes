@@ -35,7 +35,7 @@ public:
         }
 
         srand(time(NULL));
-        shuffle(numeros.begin(), numeros.end(), std::mt19937(std::random_device{}()));
+        shuffle(numeros.begin(), numeros.end(), mt19937(random_device{}()));
         pos = 0;
     }
 
