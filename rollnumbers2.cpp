@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// Cores ANSI
+
 #define RESET   "\033[0m"
 #define GREEN   "\033[32m"
 #define YELLOW  "\033[93m"
@@ -35,7 +35,7 @@ public:
         }
 
         srand(time(NULL));
-        std::shuffle(numeros.begin(), numeros.end(), std::mt19937(std::random_device{}()));
+        shuffle(numeros.begin(), numeros.end(), std::mt19937(std::random_device{}()));
         pos = 0;
     }
 
@@ -61,23 +61,23 @@ public:
         for (int i = 0; i < 100; i++) {
             int n = tabela[i].num;
 
-            // cor para o número atual sorteado
+            
             if (n == bolaAtual)
                 cout << YELLOW;
 
-            // cor para a penúltima bola
+            
             else if (n == ultimaBola)
                 cout << BLUE;
 
-            // cor para número já sorteado
+            
             else if (tabela[i].marcado)
                 cout << GREEN;
 
-            // cor padrão
+            
             else
                 cout << WHITE;
 
-            // imprime com 2 dígitos
+            
             cout << "[" << (n < 10 ? "0" : "") << n << "] " << RESET;
 
             if ((i + 1) % 10 == 0)
